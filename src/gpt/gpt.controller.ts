@@ -115,6 +115,6 @@ export class GptController {
     file: Express.Multer.File,
     @Body() audioToTextDto: AudioToTextDto,
   ) {
-    return this.gptService.audioToText(file, audioToTextDto.prompt);
+    return this.gptService.audioToText(file, audioToTextDto);
   }
 }
