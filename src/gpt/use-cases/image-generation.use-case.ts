@@ -29,7 +29,7 @@ export const imageGenerationUseCase = async (
     if (!response.data[0].url) return null;
 
     const fileName = await downloadImageAsPng(response.data[0].url);
-    const url = `${process.env.SERVER_URL}/gpt/image-generated/${fileName}`;
+    const url = `${process.env.SERVER_URL}/gpt/image-generation/${fileName}`;
 
     return {
       url: url,
@@ -42,7 +42,7 @@ export const imageGenerationUseCase = async (
   const maskPath = await downloadBase64ImageAsPng(maskImage, true);
 
   const response = await openai.images.edit({
-    model: 'dall-e-3',
+    model: 'dall-e-2',
     prompt: prompt,
     image: fs.createReadStream(pngImagePath),
     mask: fs.createReadStream(maskPath),
@@ -55,7 +55,7 @@ export const imageGenerationUseCase = async (
     throw new Error('Image URL is undefined');
   }
   const fileName = await downloadImageAsPng(response.data[0].url);
-  const url = `${process.env.SERVER_URL}/gpt/image-generated/${fileName}`;
+  const url = `${process.env.SERVER_URL}/gpt/image-generation/${fileName}`;
 
   return {
     url: url,
