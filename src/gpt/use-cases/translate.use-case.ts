@@ -10,7 +10,7 @@ export const translateUseCase = async (
   { prompt, lang }: Options,
 ) => {
   const response = await openai.chat.completions.create({
-    model: 'gpt-4o',
+    model: 'gpt-4o-mini',
     messages: [
       {
         role: 'system',
