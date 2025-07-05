@@ -8,11 +8,11 @@ export class SamAsistantController {
 
   @Post('create-thread')
   async createThread() {
-    return this.samAsistantService.createThread();
+    return await this.samAsistantService.createThread();
   }
 
   @Post('user-question')
   async userQuestion(@Body() questionDto: QuestionDto) {
-    return questionDto;
+    return await this.samAsistantService.userQuestion(questionDto);
   }
 }
